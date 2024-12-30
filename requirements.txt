@@ -1,0 +1,8 @@
+frappe-bench==5.23.0
+redis==5.2.0
+requests==2.32.3
+gunicorn==23.0.0
+pyyaml==6.0.1
+psycopg2==2.9.9
+mysqlclient==2.2.6
+cryptography==43.0.3
