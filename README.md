@@ -1,13 +1,11 @@
 # volunteer_management_frappe_erpnext_app
 
-An advanced, production-ready Volunteer Management System built on the **Frappe Framework** and **ERPNext**. This project is designed to support millions of users, featuring high scalability, security, and reliability. It demonstrates best practices with OOP principles, design patterns, RESTful APIs, and robust architectural concepts.
+An advanced, production-ready Volunteer Management System built on the **Frappe Framework** and **ERPNext**, with a **React** front-end. This project is designed to support millions of users, featuring high scalability, security, and reliability. It demonstrates best practices with OOP principles, design patterns, RESTful APIs, and robust architectural concepts.
 
 ---
 ## 1. Architecture Overview
 
 ### 1.1 High-Level Design (HLD)
-
-![High-Level Design Diagram](../diagrams/HLD.png)
 
 **Key Components**:
 
@@ -30,8 +28,6 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
 
 ### 1.2 Low-Level Design (LLD)
 
-![Low-Level Design Diagram](../diagrams/LLD.png)
-
 - **DocType: Volunteer**:
   - Fields: name, email, skills, availability, etc.
   - Linked with events, tasks
@@ -43,7 +39,7 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
 - **REST API**:
   - `rest_api.py` handles route definitions and endpoints
 - **Database**:
-  - All data is stored in the Frappe-backed SQL DB (MariaDB or PostgreSQL)
+  - All data is stored in the Frappe-backed SQL DB (PostgreSQL)
 - **Caching**:
   - Redis used for session management, caching common queries
 
@@ -66,6 +62,44 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
       - Using consistent reads from the DB and eventually consistent caches
     - Scalability and Reliability
     - High Availability through horizontal scaling with multiple workers
+
+---
+## 3. Directory Structure
+
+```bash
+volunteer_management_frappe_erpnext_app/
+├── README.md              // Project overview, usage, instructions
+├── LICENSE                // MIT License
+├── .env.example           // Sample environment variables
+├── requirements.txt       // Python dependencies
+├── setup.py               // Setup script (if packaging as a Python package)
+├── volunteer_management_frappe_erpnext_app/
+│   ├── config/            // Frappe app configuration
+│   ├── volunteer_management_frappe_erpnext_app/
+│   │   ├── hooks.py
+│   │   ├── modules/
+│   │   │   └── volunteer_management/
+│   │   │       ├── doctype/
+│   │   │       │   └── volunteer/
+│   │   │       │       ├── volunteer.json
+│   │   │       │       ├── volunteer.py
+│   │   │       ├── controllers.py
+│   │   │       ├── rest_api.py
+│   │   │       └── services.py
+│   │   └── tests/
+│   │       └── test_volunteer_management.py
+└── frontend/
+    ├── package.json
+    ├── public/
+    │   └── index.html
+    └── src/
+        ├── index.js
+        ├── App.js
+        ├── api.js
+        └── components/
+            ├── VolunteersList.js
+            └── CreateVolunteer.js
+```
 
 ---
 ## 3. Environment Variables
