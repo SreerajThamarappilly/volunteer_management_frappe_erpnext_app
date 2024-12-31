@@ -1,0 +1,16 @@
+{
+    "name": "volunteer-management-frappe-erpnext-frontend",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+      "start": "react-scripts start",
+      "build": "react-scripts build",
+      "test": "react-scripts test"
+    },
+    "dependencies": {
+        "axios": "^1.7.9",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-scripts": "^5.0.1"
+    }
+}

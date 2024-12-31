@@ -1,0 +1,39 @@
+{
+    "name": "Volunteer",
+    "module": "Volunteer Management",
+    "doctype": "DocType",
+    "custom": 0,
+    "fields": [
+      {
+        "label": "Email",
+        "fieldname": "email",
+        "fieldtype": "Data",
+        "reqd": 1
+      },
+      {
+        "label": "Skills",
+        "fieldname": "skills",
+        "fieldtype": "Table MultiSelect",
+        "reqd": 0
+      },
+      {
+        "label": "Availability",
+        "fieldname": "availability",
+        "fieldtype": "Data"
+      }
+    ],
+    "permissions": [
+      {
+        "role": "System Manager",
+        "read": 1,
+        "write": 1,
+        "create": 1
+      },
+      {
+        "role": "Volunteer Manager",
+        "read": 1,
+        "write": 1,
+        "create": 1
+      }
+    ]
+}
