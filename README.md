@@ -68,8 +68,14 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
 
 ```bash
 volunteer_management_frappe_erpnext_app/
+├── docker/
+│   ├── Dockerfile         // Docker image configuration
+│   ├── .env               // Docker-specific environment variables
+│   ├── nginx.conf         // Reverse proxy configuration for NGINX
+├── docker-compose.yml     // Multi-container setup
 ├── README.md              // Project overview, usage, instructions
 ├── .env.example           // Sample environment variables
+├── .env                   // Actual environment variables
 ├── requirements.txt       // Python dependencies
 ├── setup.py               // Setup script (if packaging as a Python package)
 ├── volunteer_management_frappe_erpnext_app/
