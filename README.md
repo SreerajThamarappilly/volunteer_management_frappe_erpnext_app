@@ -16,7 +16,7 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
 2. **Frappe/ERPNext** (Python):
    - Business logic in controllers, services, DocTypes
    - RESTful APIs using built-in Frappe endpoints
-   - Database abstraction via Frappe ORM (MariaDB/PostgreSQL)
+   - Database abstraction via Frappe ORM (PostgreSQL)
 
 3. **Caching Layer** (Redis):
    - Stores sessions, caching frequently accessed volunteer data
@@ -69,12 +69,10 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
 ```bash
 volunteer_management_frappe_erpnext_app/
 ├── README.md              // Project overview, usage, instructions
-├── LICENSE                // MIT License
 ├── .env.example           // Sample environment variables
 ├── requirements.txt       // Python dependencies
 ├── setup.py               // Setup script (if packaging as a Python package)
 ├── volunteer_management_frappe_erpnext_app/
-│   ├── config/            // Frappe app configuration
 │   ├── volunteer_management_frappe_erpnext_app/
 │   │   ├── hooks.py
 │   │   ├── modules/
@@ -93,6 +91,7 @@ volunteer_management_frappe_erpnext_app/
     ├── public/
     │   └── index.html
     └── src/
+        ├── config/        // Frappe app configuration
         ├── index.js
         ├── App.js
         ├── api.js
@@ -102,11 +101,11 @@ volunteer_management_frappe_erpnext_app/
 ```
 
 ---
-## 3. Environment Variables
+## 4. Environment Variables
 
-| Variable Name        | Description                                                | Default Value     |
-|----------------------|------------------------------------------------------------|-------------------|
-| `DB_HOST`            | Host address of the MariaDB/PostgreSQL server             | `localhost`       |
+| Variable Name        | Description                                               | Default Value     |
+|----------------------|-----------------------------------------------------------|-------------------|
+| `DB_HOST`            | Host address of the PostgreSQL server                     | `localhost`       |
 | `DB_PORT`            | Port for the DB                                           | `3306`            |
 | `DB_NAME`            | Database name                                             | `erpnext`         |
 | `DB_USER`            | Database user                                             | `root`            |
@@ -119,9 +118,9 @@ volunteer_management_frappe_erpnext_app/
 | `ALLOWED_HOSTS`      | Comma-separated list of hosts/IPs allowed                 | `localhost`       |
 
 ---
-## 4. Running the Application Locally
+## 5. Running the Application Locally
 
-### 4.1 Prerequisites
+### 5.1 Prerequisites
 
 - **Python 3.11**
 - **Node.js** and **npm** (for front-end assets)
@@ -130,7 +129,7 @@ volunteer_management_frappe_erpnext_app/
 - **Bench CLI** (Frappe/ERPNext)
 - **Git** installed
 
-### 4.2 Steps
+### 5.2 Steps
 
 1. **Install required Python packages**:
 
@@ -178,7 +177,20 @@ bench start
 http://localhost:8000
 ```
 
-### 4.3 Testing the Application
+7. **Install dependencies and start the dev server for React Front-End**:
+
+```bash
+npm install
+npm start
+```
+
+8. **Access the front-end in your browser at**:
+
+```bash
+http://localhost:3000
+```
+
+### 5.3 Testing the Application
 
 Use Postman or CURL to test the REST endpoints.
 
@@ -199,9 +211,9 @@ curl -X POST http://localhost:8000/api/method/volunteer_management_frappe_erpnex
 ```
 
 ---
-## 5. Deploying to AWS
+## 6. Deploying to AWS
 
-### 5.1 Infrastructure Setup
+### 6.1 Infrastructure Setup
 
 1. **EC2 Instances**: Host Frappe/ERPNext with multiple workers.
 2. **RDS (PostgreSQL)**: Managed DB for high availability.
@@ -209,7 +221,7 @@ curl -X POST http://localhost:8000/api/method/volunteer_management_frappe_erpnex
 4. **Load Balancer (ELB or ALB)**: Distribute traffic to multiple EC2 instances.
 5. **S3 (optional)**: For file backups, static assets.
 
-### 5.2 Deployment Steps
+### 6.2 Deployment Steps
 
 1. Provision an EC2 instance and install Bench, Frappe, Python, Redis CLI.
 2. Connect EC2 instance to your RDS and ElastiCache instances (update .env).
@@ -220,6 +232,6 @@ curl -X POST http://localhost:8000/api/method/volunteer_management_frappe_erpnex
 7. Scale horizontally by adding more EC2 instances behind a Load Balancer if traffic demands it.
 
 ---
-## 6. License
+## 7. License
 
 *This project is licensed under the MIT License.*

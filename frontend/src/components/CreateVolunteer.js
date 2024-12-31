@@ -1,5 +1,8 @@
+// frontend/src/components/CreateVolunteer.js
+
 import React, { useState } from 'react';
 import { createVolunteer } from '../api';
+import CONFIG from '../config/config';
 
 function CreateVolunteer() {
   const [name, setName] = useState('');
@@ -10,6 +13,7 @@ function CreateVolunteer() {
   async function handleCreate(e) {
     e.preventDefault();
     try {
+      console.log(`Environment: ${CONFIG.ENVIRONMENT}`);
       const skillArray = skills.length ? skills.split(',').map(s => s.trim()) : [];
       const newVolunteer = { name, email, skills: skillArray };
       const data = await createVolunteer(newVolunteer);

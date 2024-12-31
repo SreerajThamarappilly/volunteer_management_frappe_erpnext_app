@@ -1,8 +1,10 @@
-import axios from 'axios';
+// frontend/src/api.js
 
-// Example: if your Frappe site is running at http://localhost:8000
-// Adjust to match your local or production URL
-const BASE_URL = 'http://localhost:8000';
+import axios from 'axios';
+import CONFIG from './config/config';
+
+// Base API URL from config.js
+const BASE_URL = CONFIG.API_BASE_URL;
 
 export async function fetchAllVolunteers() {
   const url = `${BASE_URL}/api/method/volunteer_management_app.volunteer_management_app.modules.volunteer_management.rest_api.get_all_volunteers`;

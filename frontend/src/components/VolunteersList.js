@@ -1,9 +1,16 @@
+// frontend/src/components/VolunteersList.js
+
 import React, { useEffect, useState } from 'react';
 import { fetchAllVolunteers } from '../api';
+import CONFIG from '../config/config';
 
 function VolunteersList() {
   const [volunteers, setVolunteers] = useState([]);
   const [error, setError] = useState('');
+
+  // Log API URL and environment for debugging
+  console.log(`API Base URL: ${CONFIG.API_BASE_URL}`);
+  console.log(`Environment: ${CONFIG.ENVIRONMENT}`);
 
   useEffect(() => {
     loadVolunteers();
