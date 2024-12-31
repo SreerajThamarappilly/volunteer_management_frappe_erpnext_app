@@ -9,7 +9,7 @@ An advanced, production-ready Volunteer Management System built on the **Frappe 
 
 **Key Components**:
 
-1. **Client/Front-end** (JS or React/Vue):
+1. **Client/Front-end** (React.js):
    - Consumes RESTful APIs
    - Communicates with Frappe controllers
 
@@ -137,14 +137,13 @@ volunteer_management_frappe_erpnext_app/
 pip install -r requirements.txt
 ```
 
-2. **Install Frappe/ERPNext (if not already done)**:
+2. **Build and Run the Docker Image**:
 
 ```bash
-# Use Bench to init a frappe-bench
-bench init frappe-bench
-cd frappe-bench
-bench get-app erpnext --branch version-14
-bench get-app ../volunteer_management_frappe_erpnext_app # path to cloned folder
+docker-compose build
+docker-compose up -d
+docker ps
+docker exec -it frappe-backend bash
 ```
 
 3. **Create a new site**:
@@ -165,10 +164,10 @@ bench --site site1.local install-app erpnext
 bench --site site1.local install-app volunteer_management_frappe_erpnext_app
 ```
 
-5. **Start bench**:
+5. **Exit the Container**:
 
 ```bash
-bench start
+exit
 ```
 
 6. **Access the site at**:
@@ -192,7 +191,38 @@ http://localhost:3000
 
 ### 5.3 Testing the Application
 
-Use Postman or CURL to test the REST endpoints.
+1. **Test PostgreSQL Connection**:
+
+Inside the PostgreSQL container:
+
+```bash
+docker exec -it postgres-db bash
+psql -U frappe_user -d erpnext
+```
+
+Run SQL Queries:
+
+```bash
+\dt  -- List tables
+\q   -- Exit
+```
+
+2. **Test Redis Connection**:
+
+Inside the Redis container:
+
+```bash
+docker exec -it redis-cache redis-cli
+```
+
+Test a key-value pair:
+
+```bash
+set test_key "hello_world"
+get test_key
+```
+
+3. **Use Postman or CURL to test the REST endpoints**:
 
 ```bash
 # Example: Fetch all volunteers
